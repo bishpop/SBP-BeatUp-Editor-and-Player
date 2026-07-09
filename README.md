@@ -8,6 +8,8 @@
 
 With a seamless blend of charting tools and a highly authentic gameplay renderer, SanPlayer allows you to create, edit, and play beat-maps with absolute sub-pixel precision.
 
+
+## This is the v0.1 Pre-Release to find more information about the newest release please also read the ![v0.3 Release](https://github.com/bishpop/SBP-BeatUp-Editor-and-Player/releases/tag/v0.3).
 ---
 
 ## ✨ Key Features
