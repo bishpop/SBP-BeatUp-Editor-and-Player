@@ -1,98 +1,136 @@
-# 🎵 SanPlayer (SBP Editor) v0.1
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1A1825&height=200&section=header&text=SanPlayer&fontSize=70&fontColor=E0AF68&animation=fadeIn&fontAlignY=35&desc=BeatUp%20Chart%20Editor&descAlignY=68&descSize=18" />
 
-![Version](https://img.shields.io/badge/version-0.1-blue.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%20(WPF)-lightgrey.svg)
-![License](https://img.shields.io/badge/license-Open%20Source-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=for-the-badge)
+![Framework](https://img.shields.io/badge/Framework-WPF%20%2F%20.NET-512BD4?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Open%20Source-green?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-v0.3-orange?style=for-the-badge)
 
-**SanPlayer** is a custom, feature-rich rhythm game player and chart editor written in C# (WPF). It is specifically designed to replicate and map **BeatUp** style charts (similar to Audition / CDIU). 
+<br>
 
-With a seamless blend of charting tools and a highly authentic gameplay renderer, SanPlayer allows you to create, edit, and play beat-maps with absolute sub-pixel precision.
+**San BeatUp Player** (SBP) is a modern, open-source rhythm game engine and advanced chart editor, explicitly built for **6-Key / BeatUp** style mechanics (Numpad 741 / 963 + Space + Finish). 
 
+Whether you want to play existing charts, create your own from scratch, or convert between different game formats, SanPlayer provides a seamless, high-performance solution with a beautifully designed Glassmorphism UI.
 
-## This is the v0.1 Pre-Release to find more information about the newest release please also read the ![v0.3 Release](https://github.com/bishpop/SBP-BeatUp-Editor-and-Player/releases/tag/v0.3).
----
+<br>
 
-## ✨ Key Features
+![San BeatUp Player Preview](https://raw.githubusercontent.com/bishpop/bishpop/main/assets/san_player.png)
 
-* **Live Split-View Charting:** Edit your charts in real-time while watching the Autoplay render your gameplay and hit-bursts instantly in the split-screen game view!
-* **3 Display Modes:** 
-  * 🎮 **Game Mode:** Pure gameplay experience with authentic hit-bursts, combos, and UI scaling.
-  * 📝 **Editor Mode:** A powerful timeline canvas to place, copy, paste, and mirror notes.
-  * 🎛️ **Split View:** Charting timeline and live gameplay side-by-side.
-* **Custom Backgrounds:** Easily swap backgrounds directly from the top menu. Just drop your favorite `.png`, `.jpg`, or `.bmp` files into the `assets/background` folder!
-* **Authentic Mechanics:** Fully replicates 6-Key + Spacebar gameplay, including the iconic "Finish Move" (Lane 7) ease-out animations and combo gauge systems.
-* **Extensive File Support:**
-  * Import/Export: `.slk` (SYLK) and `.ssc` (StepMania) chart files.
-  * Audio: Import standard `.ogg` music files.
-  * Native: Save and load your full workspace using custom `.san` project files.
-* **Smooth Rendering:** Anti-flutter sub-pixel rendering for arrows (`a18`-`a98`) ensures butter-smooth animations even during heavy mouse movement.
+</div>
 
 ---
 
-## 🕹️ Controls & Keybinds
+## ✨ Features at a Glance
 
-### Global Transport (Audio)
-| Key | Action |
+* 🎮 **Dynamic Dual View:** Seamlessly switch between **Game Mode** (to play), **Editor Mode** (DAW-style tracker), or **Split View** to chart and playtest simultaneously.
+* 🚀 **High-Performance Engine:** Powered by a 1000Hz custom game loop with dynamic WPF rendering. It runs at a smooth 60 FPS in the editor (to save CPU) and automatically unlocks uncapped FPS during playback.
+* 📝 **Advanced Charting Tools:** 
+  * Real-time Numpad-charting or mouse placement.
+  * Box-selection, Copy & Paste.
+  * Horizontal Mirroring (Left <-> Right) & Vertical Mirroring.
+  * Smart Randomization tools.
+* 🔄 **Bulletproof Undo & Redo:** A 100-step history cache allows you to undo (`Ctrl+Z`) and redo (`Ctrl+Y`) any modification instantly.
+* 📊 **Live Stats Analysis:** A beautiful floating Glassmorphism window provides real-time chart analysis (Density, Rapid Ticks, L/R Patterns, Stair Patterns, and a calculated Difficulty Level).
+* 🛡️ **Auto-Save & Crash Handler:** Never lose a chart again. The app silently saves your project every 2 minutes. If the worst happens, a custom crash handler catches the error and keeps your data safe.
+* 🎵 **Built-in Auto-Updater:** The app checks the GitHub API on startup and notifies you automatically when a new version is available.
+
+---
+
+## 🛠️ Supported File Formats
+
+SanPlayer acts as a bridge between different rhythm game engines:
+
+* **`.san` (SanPlayer Project):** The native workspace format. It saves your audio path, BPM, offset, chart data, and your **Creditor Watermark** in a single compressed file.
+* **`.slk` (SYLK Format):** Import and Export charts for standard BeatUp engines. (Automatically embeds your Creditor name as a watermark!).
+* **`.ssc` (StepMania Format):** Import and export `dance-bu` style StepMania charts. Audio files are automatically copied, and offsets/BPMs are formatted with high precision.
+* **`.ogg` (Audio):** The universally supported audio format for playback.
+
+---
+
+## 🚀 Getting Started (Workflow Guide)
+
+### 1. Installation
+1. Download the latest release from the [Releases page](https://github.com/bishpop/SBP-BeatUp-Editor-and-Player/releases).
+2. Unzip the folder. Make sure the `assets` folder is kept in the same directory as the `AuditionPlayer.exe`.
+3. Launch the application.
+
+### 2. Setting up a new Chart
+1. Click **File -> Import .ogg Audio** and select your song.
+2. Enter the **BPM** of the song when prompted.
+3. On the top menu, enter your **Creditor** name (this will be used as a watermark when exporting).
+4. *(Optional)* Adjust the **Audio Offset** (default is `0.7` sec).
+
+### 3. The Charting Process
+1. Switch to **Editor Mode** or **Split View** via the top menu.
+2. Choose your **Snap Settings** (Right-Click the grid):
+   * **Red Line:** 1/4 Beat
+   * **Blue Line:** 1/8 Beat
+   * **Yellow Line:** 1/16 Beat
+3. Enable **Autoplay / Numpad Charting** if you want to record notes live using your keyboard while the music plays.
+4. Hit **Play** (`Space`) and start mapping!
+
+### 4. Saving & Exporting
+* **Always save your progress** via `File -> Save Project (.san)`. This allows you to close the app and resume perfectly later.
+* Once your chart is finished, use `File -> Export .ssc` (for StepMania) or `File -> Export .slk`.
+
+---
+
+## ⌨️ Controls & Keybinds
+
+### Gameplay & Live Numpad Charting
+| Action | Keybind |
 | :--- | :--- |
-| `Space` | **Play** (Only if paused) |
-| `P` | **Pause** |
-| `K` | **Stop** (Rewinds to start/editor position) |
-| `Up / Down` | Seek forward / backward in timeline |
+| **Left Lanes (7, 4, 1)** | `Numpad 7`, `Numpad 4`, `Numpad 1` (or `Home`, `Left`, `End`) |
+| **Right Lanes (9, 6, 3)** | `Numpad 9`, `Numpad 6`, `Numpad 3` (or `PgUp`, `Right`, `PgDn`) |
+| **Spacebar (SP)** | `Space`, `Numpad 0`, or `Insert` |
+| **Finish (F)** | `Numpad 5`, `Enter`, or `Clear` |
 
-### Gameplay & Charting (Standard Mode)
-| Key | Action (Lane) |
+### Chart Editor Shortcuts
+| Shortcut | Action |
 | :--- | :--- |
-| `1` / `2` / `3` | Left Arrows (Top, Mid, Bottom) |
-| `4` / `5` / `6` | Right Arrows (Top, Mid, Bottom) |
-| `S` | Spacebar (Normal) |
-| `F` | Spacebar (Finish Move) |
+| `Left Click` | Place or Delete a note at the cursor |
+| `Ctrl` + `Left Click (Drag)` | Box Selection (select multiple notes) |
+| `Ctrl` + `Left Click` | Select or Deselect an individual note |
+| `Right Click` | Open Context Menu (Settings, Snapping, Randomize) |
+| `Ctrl` + `Scroll Wheel` | Zoom in / Zoom out of the timeline |
+| `Scroll Wheel` | Scroll up / down the timeline |
+| `Up` / `Down` Arrow | Seek timeline forward/backward by current Snap step |
+| `Space` / `P` | Play / Pause |
+| `K` | Stop (Returns to Beat 0) |
 
-### Gameplay & Charting (Numpad Mode `74196305`)
-| Key | Action (Lane) |
+### Advanced Editor Hotkeys
+| Shortcut | Action |
 | :--- | :--- |
-| `Num 7` / `4` / `1` | Left Arrows (Top, Mid, Bottom) |
-| `Num 9` / `6` / `3` | Right Arrows (Top, Mid, Bottom) |
-| `Num 0` | Spacebar (Normal) |
-| `Num 5` | Spacebar (Finish Move) |
+| `Ctrl` + `Z` | Undo last action |
+| `Ctrl` + `Y` | Redo last action |
+| `Ctrl` + `C` | Copy selected notes |
+| `Ctrl` + `V` | Paste copied notes at the current playhead |
+| `Ctrl` + `A` | Select all notes in the chart |
+| `Delete` | Delete all selected notes |
+| `Ctrl` + `W` | Mirror horizontally (Left <-> Right) |
+| `Ctrl` + `E` | Mirror vertically (7<->4, 9<->6, etc.) |
 
 ---
 
-## 📂 Project Structure & Assets
+## 🔧 Building from Source
 
-To run SanPlayer correctly, ensure the `assets` folder is placed in the output directory (e.g., `bin/Debug/assets/`).
-
-```text
-SanPlayer/
-├── Core/               # GameState, BeatEngine and Math logic
-├── Rendering/          # GameRenderer (WPF Canvas) & Editor Canvas
-├── Services/           # Audio playback logic
-├── assets/
-│   ├── arrows/         # a18-a98 base arrows, l0-l5 glows, arrow_explode
-│   ├── background/     # Drop custom .png/.jpg/.bmp backgrounds here
-│   ├── bars/           # spacebar, blackbars, fn (Finish Move)
-│   ├── game/           # Gameplay UI (combos, cups, gauges)
-│   ├── sounds/         # beat.wav, space_bar.wav
-```
-
----
-
-## 🚀 Installation & Build
-
+If you want to modify or compile SanPlayer yourself:
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/bishpop/SBP-BeatUp-Editor-and-Player.git](https://github.com/bishpop/SBP-BeatUp-Editor-and-Player.git)
+   git clone https://github.com/bishpop/SBP-BeatUp-Editor-and-Player.git
    ```
-2. Open the `.sln` file in **Visual Studio** (2019/2022).
-3. Ensure `.NET Framework` (WPF) is installed via the Visual Studio Installer.
-4. Restore NuGet packages (if applicable).
-5. Press `F5` to build and run the project.
-
-*(Note: If you add new background images to the `assets/background` folder, restart the application to load them into the menu).*
+2. Open the solution `(.sln)` in **Visual Studio 2022**.
+3. Ensure you have the .NET desktop development (WPF) workload installed.
+4. Build the solution (Target: x86)
 
 ---
 
-## 👨‍💻 About
+### 👨‍💻About & Credits
+Developed and mainted by [Sabya (bishpop)](https://github.com/bishpop).
+Built to solve real workflow problems for charting nerds and rhythm game enthusiasts playing Audition.
 
-**SanPlayer - SBP v0.1**  
-Free and Open-Source software.  
-Made with ❤️ by **Sanya**.
+If you find a bug or have a feature request, feel free to open an **Issue** or submit a **Pull Request**.
+
+<div align="center">
+<i>© 2026 Sanya — All rights reserved.</i>
+</div>
